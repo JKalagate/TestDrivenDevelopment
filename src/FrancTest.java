@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FrancTest {
+class FrancTest extends Money {
 
     @Test
     public void testMultiplication() {
@@ -10,5 +10,6 @@ class FrancTest {
         assertEquals(new Franc(10), five.times(2));
         assertEquals(new Franc(15), five.times(3));
     }
+
 
 }
