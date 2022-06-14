@@ -12,17 +12,10 @@
         return amount == money.amount &&
                 currency.equals(money.currency);
     }
-
-    Money time (int multiplier){
-        return new Money(amount * multiplier, currency);
-    }
-
-    //abstract Money times (int multiplier);
-
     static Money dollar(int amount){
-        return new Dollar(amount, "USD");
+        return new Money(amount, "USD");
     }
     static Money franc(int amount){
-        return new Franc(amount, "CHF");
+        return new Money(amount, "CHF");
     }
 }
