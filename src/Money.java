@@ -11,8 +11,9 @@
          return new Sum(this, added);
      }
 
-     public Money reduce (String to){
-        return this;
+     public Money reduce (Bank bank, String to){
+        int rate = bank.rate(currency, to);
+        return new Money(amount/rate,to);
      }
 
     public boolean equals (Object object){
