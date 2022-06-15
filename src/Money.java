@@ -7,8 +7,12 @@
         this.currency = currency;
     }
 
-     Expression plus (Money added) {
+     public Expression plus (Expression added) {
          return new Sum(this, added);
+     }
+
+     Expression times(int multiplier){
+        return new Money(amount * multiplier, currency);
      }
 
      public Money reduce (Bank bank, String to){
