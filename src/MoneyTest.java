@@ -38,14 +38,35 @@ class MoneyTest {
     }
 
     @Test
-    public void textMixedAddiiton(){
+    public void testSumPlusMoney(){
         Expression fiveBucks = Money.dollar(5);
         Expression tenfrancs = Money.franc(10);
         Bank bank = new Bank();
         bank.addRate("CHF", "USD", 2);
-        Money result = bank.reduce(fiveBucks.plus(tenfrancs),"USD");
-        assertEquals(Money.dollar(10), result);
+        Expression sum = new Sum(fiveBucks, tenfrancs).plus(fiveBucks);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(15), result);
     }
+
+    @Test
+    public void testSumTimes(){
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenfrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Expression sum = new Sum(fiveBucks, tenfrancs).times(2);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(20), result);
+    }
+
+    /*
+    @Test
+    public void testPlusSameCurrencyReturnsMoney(){
+        Expression sum = Money.dollar(1).plus(Money.dollar(1));
+        assertTrue(sum instanceof Money);
+    }
+
+     */
 
 
 
